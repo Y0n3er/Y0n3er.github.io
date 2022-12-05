@@ -4,5 +4,4 @@ inject:
   head:
   //- <link rel="stylesheet" href="/xxx.css">
   bottom:
-    //- <script src="xxxx"></script>
-      - <script src="source/background.js"></script>
+      <script src="source/background.js"></script>

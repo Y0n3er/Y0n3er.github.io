@@ -4,11 +4,12 @@
 #page-header{
     background: transparent!important;
   }
+
   /* top-img黑色透明玻璃效果移除，我自己是没有加的，毕竟在文章详情页面，这样会更有区分度一点 */
   
-  #page-header.post-bg:before {
-    background-color: transparent!important;
-  }
+#footer, #footer:before {
+    background: transparent!important
+}
   
   
   /* 夜间模式伪类遮罩层透明 */
@@ -32,4 +33,37 @@
     text-align: center;
     padding: 2rem 1rem;
   }
-  
+/*滚动条美化设置*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e58a8a;
+    background-image: -webkit-linear-gradient( 45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+::-moz-selection {
+    color: #fff;
+    background-color: #e58a8a;
+}
+
+
+/*鼠标样式设置*/
+/*指针样式*/
+body {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+        default;
+}
+/*链接小手样式*/
+a,
+img {
+    cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+        default;
+}

@@ -5,11 +5,11 @@
     background: transparent!important;
   }
   /* top-img黑色透明玻璃效果移除，我自己是没有加的，毕竟在文章详情页面，这样会更有区分度一点 */
-  /*
+  
   #page-header.post-bg:before {
     background-color: transparent!important;
   }
-  */
+  
   
   /* 夜间模式伪类遮罩层透明 */
   [data-theme="dark"]

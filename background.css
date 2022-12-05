@@ -5,7 +5,7 @@
     background: transparent!important;
   }
 
-  /* top-img黑色透明玻璃效果移除，我自己是没有加的，毕竟在文章详情页面，这样会更有区分度一点 */
+/* top-img黑色透明玻璃效果移除，我自己是没有加的，毕竟在文章详情页面，这样会更有区分度一点 */
   
 #footer, #footer:before {
     background: transparent!important
@@ -139,4 +139,33 @@ a,
 img {
     cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
         default;
+}
+
+/* 首页文章卡片 */
+#recent-posts > .recent-post-item{
+    background:rgba(255, 255, 255, 0.9);
+}
+/* 首页侧栏卡片 */
+.card-widget{
+  background:rgba(255, 255, 255, 0.9)!important;
+}
+/* 文章页面正文背景 */
+div#post{
+  background: rgba(255, 255, 255, 0.9);
+}
+/* 分页页面 */
+div#page{
+  background: rgba(255, 255, 255, 0.9);
+}
+/* 归档页面 */
+div#archive{
+  background: rgba(255, 255, 255, 0.9);
+}
+/* 标签页面 */
+div#tag{
+  background: rgba(255, 255, 255, 0.9);
+}
+/* 分类页面 */
+div#category{
+  background: rgba(255, 255, 255, 0.9);
 }

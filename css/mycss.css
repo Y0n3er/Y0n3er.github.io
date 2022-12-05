@@ -1,4 +1,3 @@
-/* 
 /* 文章页背景 */
 .layout_post>#post {
     /* 以下代表透明度为0.5 可以自行修改*/
@@ -68,44 +67,4 @@
       rgba(7, 179, 155, 0.1) 86%,
       rgba(109, 186, 130, 0.1) 100%
     );
-  } */
-  
-
-  /*文章页背景*//*分类页面*//*时间轴页面*/
-.layout #post, .layout #page , .layout #archive , .layout #category{
-  /* 以下代表透明度为0.5 可以自行修改*/
-background:rgba(255, 255, 255, .9);
-}
-/*侧边栏页面*/
-#aside-content .sticky_layout .card-widget , #aside-content .card-widget{
-  background: rgba(255,255,255,.8);
-}
-/* 所有页面背景 */
-#recent-posts>.recent-post-item, .read-mode .layout_post>#post{
-  /* 以下代表透明度为0.5 */
-  background: rgba(255,255,255,.8);
-}
-#page-header #nav {
-  /* 以下代表透明度为0.5 */
-  background: transparent!important;
-}
-
-/*以下是封面图透明*/
-#page-header.full_page::before {
-  background-color: transparent!important;
-}
-
-/*文章页背景*//*分类页面*//*时间轴页面*/
-[data-theme = dark] .layout>#post,[data-theme = dark] .layout #page ,[data-theme = dark] .layout #archive ,[data-theme = dark] .layout>#category{
-  /* 以下代表透明度为0.5 可以自行修改*/
-background:rgba(0, 0, 0, 0.9);
-  }   
-/*侧边栏页面*/
-[data-theme = dark] #aside-content .sticky_layout .card-widget , [data-theme = dark] #aside-content .card-widget{
-  background:rgba(0, 0, 0, 0.9);
-}
-/* 所有页面背景 */
-[data-theme = dark] #recent-posts>.recent-post-item,[data-theme = dark]  .read-mode .layout_post>#post{
-  /* 以下代表透明度为0.5 */
-  background:rgba(0, 0, 0, 0.9);
-}
+  }

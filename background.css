@@ -8,7 +8,7 @@
 /* top-img黑色透明玻璃效果移除，我自己是没有加的，毕竟在文章详情页面，这样会更有区分度一点 */
   
 #footer, #footer:before {
-    background: transparent!important
+    background: transparent!important;
 }
   
   

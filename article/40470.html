@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>学习搭建一个简单题 | Y0n3er</title><meta name="author" content="Y0n3er"><meta name="copyright" content="Y0n3er"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言关于用docker出题的文章实在是太少了，所以自己在学习的时候记录一下docker的一些基本搭建在这里就不一一说明了，这里只记录一下如何把一个题目弄出来，可能有些地方也有错误 进入主题按我自己的理解就是先拉取一个镜像用来布置题目所需的环境以及容器所需我这里使用ctftraining&#x2F;base_image_nginx_mysql_php_73 这个镜像一开始我用的tutum&#x2F;lamp但是发现这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习搭建一个简单题">
+<meta property="og:url" content="https://y0n3er.github.io/undefined/40470.html">
+<meta property="og:site_name" content="Y0n3er">
+<meta property="og:description" content="前言关于用docker出题的文章实在是太少了，所以自己在学习的时候记录一下docker的一些基本搭建在这里就不一一说明了，这里只记录一下如何把一个题目弄出来，可能有些地方也有错误 进入主题按我自己的理解就是先拉取一个镜像用来布置题目所需的环境以及容器所需我这里使用ctftraining&#x2F;base_image_nginx_mysql_php_73 这个镜像一开始我用的tutum&#x2F;lamp但是发现这个">
+<meta property="og:locale">
+<meta property="og:image" content="https://s1.ax1x.com/2022/11/10/zpbQit.png">
+<meta property="article:published_time" content="2022-12-15T05:45:37.000Z">
+<meta property="article:modified_time" content="2022-12-19T11:17:50.473Z">
+<meta property="article:author" content="Y0n3er">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/11/10/zpbQit.png"><link rel="shortcut icon" href="https://s1.ax1x.com/2022/12/27/zzBdET.jpg"><link rel="canonical" href="https://y0n3er.github.io/undefined/40470"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="cSE3ms5xTRF6lPYKYoBFufBNgzQms6e9odca93mSfBw"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/Y0n3er" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '学习搭建一个简单题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-19 19:17:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0-rc1"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2022/12/27/zzBdET.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s1.ax1x.com/2022/10/08/xGrm4I.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Y0n3er</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">学习搭建一个简单题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-12-15T05:45:37.000Z" title="Created 2022-12-15 13:45:37">2022-12-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-12-19T11:17:50.473Z" title="Updated 2022-12-19 19:17:50">2022-12-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Doker/">Doker</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="学习搭建一个简单题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>关于用docker出题的文章实在是太少了，所以自己在学习的时候记录一下<br>docker的一些基本搭建在这里就不一一说明了，这里只记录一下如何把一个题目弄出来，可能有些地方也有错误</p>
+<h2 id="进入主题"><a href="#进入主题" class="headerlink" title="进入主题"></a>进入主题</h2><p>按我自己的理解就是先拉取一个镜像用来布置题目所需的环境以及容器所需<br>我这里使用<code>ctftraining/base_image_nginx_mysql_php_73</code> 这个镜像一开始我用的<code>tutum/lamp</code><br>但是发现这个镜像有点问题不能显示中文，可能是dockerfile没设置<br>拉取镜像<code>docker pull ctftraining/base_image_nginx_mysql_php_73 </code><br>这里我已经拉取了，所以列一下<br><img src="https://s1.ax1x.com/2022/12/15/zo0fQs.png" alt="zo0fQs.png"><br>然后使用ctftraining&#x2F;base_image_nginx_mysql_php_73镜像启动一个容器，同时映射到服务器的2333端口<br><code> docker run -d -p 2333:80 ctftraining/base_image_nginx_mysql_php_73</code><br><img src="https://s1.ax1x.com/2022/12/15/zo0Rzj.png" alt="zo0Rzj.png"><br>可以看到已经启动了一个容器，然后就是弄出题文件了，先上传到服务器的&#x2F;var&#x2F;www&#x2F;html下<br>一个简单的抓包查看源码的题，因为主要是学习怎么布置一个题目，所以直接到网上找的一个源码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=<span class="string">&quot;font-family:arial;color:black;font-size:20px;text-align:center;&quot;</span>&gt;Flag不在这里哦&lt;/p&gt;  </span><br><span class="line">&lt;!-- flag&#123;This_is_flag&#125; --&gt;  </span><br><span class="line">&lt;/body&gt;  </span><br><span class="line">&lt;script&gt;  </span><br><span class="line"> document.oncontextmenu=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">   <span class="title function_ invoke__">alert</span>(<span class="string">&quot;右键被禁用&quot;</span>);  </span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">  &#125;;  </span><br><span class="line"> document.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;  </span><br><span class="line">    e = window.event || e;  </span><br><span class="line">    <span class="keyword">var</span> k = e.keyCode;  </span><br><span class="line">    <span class="comment">//屏蔽ctrl+u，F12键  </span></span><br><span class="line">    <span class="keyword">if</span> ((e.ctrlKey == <span class="literal">true</span> &amp;&amp; k == <span class="number">85</span>) || k == <span class="number">123</span>) &#123;  </span><br><span class="line">      <span class="keyword">if</span> (k == <span class="number">85</span>)  </span><br><span class="line">        <span class="title function_ invoke__">alert</span>(<span class="string">&quot;Ctrl+U被禁用!&quot;</span>);  </span><br><span class="line">      <span class="keyword">else</span>   </span><br><span class="line">        <span class="title function_ invoke__">alert</span>(<span class="string">&quot;F12被禁用!&quot;</span>);  </span><br><span class="line">      e.keyCode = <span class="number">0</span>;  </span><br><span class="line">      e.returnValue = <span class="literal">false</span>;  </span><br><span class="line">      e.cancelBubble = <span class="literal">true</span>;  </span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后把题目的源码从服务器copy到容器中<br><code>docker cp /var/www/html/index.php 603788:/var/www/html/</code><br>容器id不用写全只要能识别出来就行，执行之后访问就行<br>访问<code>服务器ip:2333</code><br><img src="https://s1.ax1x.com/2022/12/15/zo02WQ.png" alt="zo02WQ.png"><br>布置成功<br><img src="https://s1.ax1x.com/2022/12/15/zo0cFS.png" alt="zo0cFS.png"><br>然后抓包得到flag<br><img src="https://s1.ax1x.com/2022/12/15/zo0gJg.png" alt="zo0gJg.png"><br>然后就是dockerfile和docker-compose.yml的编写，用来快速本地部署和动态flag实现等，这里就先不写了,当然那个也是很重要的东西<br>最后这里列一下我最近经常用的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">exit //退出容器</span><br><span class="line">systemctl restart docker  //重启docker</span><br><span class="line">docker start 容器id  //开启一个已知id的容器</span><br><span class="line">docker restart 容器id  //重新启动容器</span><br><span class="line">docker exec -it  容器id bash  //退出容器后容器不关闭</span><br><span class="line">docker stop 容器id  //结束容器</span><br><span class="line">docker ps  //查看正在运行的容器</span><br><span class="line">docker image ls  //查看镜像目录</span><br></pre></td></tr></table></figure>
+
+<p>参考：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Cypher_X/article/details/115359957">CTF Web出题感悟_Wuuconix的博客-CSDN博客_ctf web出题</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_62422842/article/details/126604577?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-126604577-blog-115359957.pc_relevant_multi_platform_whitelistv4&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-126604577-blog-115359957.pc_relevant_multi_platform_whitelistv4&utm_relevant_index=5">用docker搭建简易ctf题目_XiLitter的博客-CSDN博客_ctf题目docker</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://Y0n3er.github.io">Y0n3er</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://y0n3er.github.io/undefined/40470.html">https://y0n3er.github.io/undefined/40470.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2022/11/10/zpbQit.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/undefined/45179.html"><img class="prev-cover" src="https://s1.ax1x.com/2022/12/03/zrYdw4.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">7字符rce题目搭建</div></div></a></div><div class="next-post pull-right"><a href="/undefined/53909.html"><img class="next-cover" src="https://s1.ax1x.com/2022/11/10/zpbQit.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">弱口令招新赛wp(部分)</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s1.ax1x.com/2022/12/27/zzBdET.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Y0n3er</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Y0n3er"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">纯纯记录一下</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">进入主题</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/undefined/2497.html" title="PB-CMS代码审计学习"><img src="https://s21.ax1x.com/2024/03/19/pFR7nfg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PB-CMS代码审计学习"/></a><div class="content"><a class="title" href="/undefined/2497.html" title="PB-CMS代码审计学习">PB-CMS代码审计学习</a><time datetime="2024-03-19T05:16:08.000Z" title="Created 2024-03-19 13:16:08">2024-03-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/56078.html" title="disable_functions绕过总结"><img src="https://z1.ax1x.com/2023/12/07/pigYT8H.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="disable_functions绕过总结"/></a><div class="content"><a class="title" href="/undefined/56078.html" title="disable_functions绕过总结">disable_functions绕过总结</a><time datetime="2023-12-06T08:45:49.000Z" title="Created 2023-12-06 16:45:49">2023-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/55174.html" title="梦想CMS 1.4代码审计学习"><img src="https://z1.ax1x.com/2023/12/07/pigYLrt.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="梦想CMS 1.4代码审计学习"/></a><div class="content"><a class="title" href="/undefined/55174.html" title="梦想CMS 1.4代码审计学习">梦想CMS 1.4代码审计学习</a><time datetime="2023-08-28T13:56:06.000Z" title="Created 2023-08-28 21:56:06">2023-08-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/26817.html" title="Fastjson1.2.62-1.2.68绕过"><img src="https://s1.ax1x.com/2023/08/28/pPUWtRU.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fastjson1.2.62-1.2.68绕过"/></a><div class="content"><a class="title" href="/undefined/26817.html" title="Fastjson1.2.62-1.2.68绕过">Fastjson1.2.62-1.2.68绕过</a><time datetime="2023-08-27T15:56:10.000Z" title="Created 2023-08-27 23:56:10">2023-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/undefined/30141.html" title="Fastjson1.2.25-1.2.47绕过"><img src="https://s21.ax1x.com/2024/03/19/pFR7ttU.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Fastjson1.2.25-1.2.47绕过"/></a><div class="content"><a class="title" href="/undefined/30141.html" title="Fastjson1.2.25-1.2.47绕过">Fastjson1.2.25-1.2.47绕过</a><time datetime="2023-08-27T15:55:43.000Z" title="Created 2023-08-27 23:55:43">2023-08-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By <i id="heartbeat" class="fa fas fa-heartbeat"></i> Y0n3er</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Y2LIAdhXjz212oPe1Sedkelg-gzGzoHsz',
+      appKey: 'DBMCkRs4Tdy7VHSxJWijRuer',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="source/background.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>

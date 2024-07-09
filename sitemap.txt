@@ -1,3 +1,4 @@
+https://y0n3er.github.io/about/index.html
 https://y0n3er.github.io/2024/07/JFinalCMS%E5%AE%A1%E8%AE%A1%E7%BB%83%E4%B9%A0/
 https://y0n3er.github.io/2024/06/Showdoc3-2-5-SQL%E6%B3%A8%E5%85%A5%E5%8F%8A%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%88%86%E6%9E%90/
 https://y0n3er.github.io/2024/04/C3P0%E9%93%BE%E5%AD%A6%E4%B9%A0/
@@ -10,7 +11,6 @@ https://y0n3er.github.io/2023/08/%E6%A2%A6%E6%83%B3CMS-1-4%E4%BB%A3%E7%A0%81%E5%
 https://y0n3er.github.io/2023/12/disable-functions%E7%BB%95%E8%BF%87%E6%80%BB%E7%BB%93/
 https://y0n3er.github.io/2023/08/Fastjson1-2-62-1-2-68%E7%BB%95%E8%BF%87/
 https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BCC%E9%93%BE11/
-https://y0n3er.github.io/about/index.html
 https://y0n3er.github.io/2023/08/Java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E4%B9%8BFastjson%E5%85%A5%E9%97%A8%E7%AF%87/
 https://y0n3er.github.io/2023/08/HacktheBox-Gofer/
 https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BShiro721/

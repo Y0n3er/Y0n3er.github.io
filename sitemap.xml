@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://y0n3er.github.io/2024/11/test/</loc>
+    
+    <lastmod>2024-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://y0n3er.github.io/2024/08/2024%E7%BE%8A%E5%9F%8E%E6%9D%AF-ezjava/</loc>
     
     <lastmod>2024-08-31</lastmod>
@@ -515,14 +524,14 @@
   </url>
   
   <url>
-    <loc>https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/</loc>
+    <loc>https://y0n3er.github.io/categories/CTF/</loc>
     <lastmod>2024-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://y0n3er.github.io/categories/CTF/</loc>
+    <loc>https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2024-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -544,13 +553,6 @@
   
   <url>
     <loc>https://y0n3er.github.io/categories/%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2024-11-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://y0n3er.github.io/categories/%E4%B8%AA%E4%BA%BA/</loc>
     <lastmod>2024-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2024-11-18T11:55:24.017Z</updated>
+  <updated>2025-02-22T16:56:12.736Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2025-SUCTF-SU_ez_solon</title>
+    <link href="https://y0n3er.github.io/2025/02/2025-SUCTF-SU-ez-solon/"/>
+    <id>https://y0n3er.github.io/2025/02/2025-SUCTF-SU-ez-solon/</id>
+    <published>2025-02-22T16:39:41.000Z</published>
+    <updated>2025-02-22T16:56:12.736Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;SU-ez-solon&quot;&gt;&lt;a href=&quot;#SU-ez-solon&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="CTF" scheme="https://y0n3er.github.io/categories/CTF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>PolarCTF_2024秋季个人挑战赛_Java</title>
@@ -469,29 +492,6 @@
     
     
     <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Vulnhub-DC-9</title>
-    <link href="https://y0n3er.github.io/2023/07/Vulnhub-DC-9/"/>
-    <id>https://y0n3er.github.io/2023/07/Vulnhub-DC-9/</id>
-    <published>2023-07-10T13:40:32.000Z</published>
-    <updated>2023-07-10T14:03:00.565Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;p&gt;下载地址：&lt;a href=&quot;https://www.vulnhub.com/entry/dc-9,412/&quot;&gt;DC: 9 ~</summary>
-        
-      
-    
-    
-    
-    <category term="渗透" scheme="https://y0n3er.github.io/categories/%E6%B8%97%E9%80%8F/"/>
     
     
   </entry>

@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2025-02-22T17:21:40.987Z</updated>
+  <updated>2025-03-06T13:53:17.722Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apache HugeGraph-Server JWT 权限绕过</title>
+    <link href="https://y0n3er.github.io/2025/03/Apache-HugeGraph-Server-JWT-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/"/>
+    <id>https://y0n3er.github.io/2025/03/Apache-HugeGraph-Server-JWT-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/</id>
+    <published>2025-03-06T13:50:10.000Z</published>
+    <updated>2025-03-06T13:53:17.722Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;看到p神的vulhub环境更新了，正好是个权限绕过，对这块不太熟复现一手&lt;/p&gt;
+&lt;h2 id=&quot;影响版本及编号&quot;&gt;&lt;a href=&quot;#影响版本及编号&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="https://y0n3er.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2025-SUCTF-SU-ez-solon</title>
@@ -459,33 +483,6 @@
         
     <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;p&gt;jdk8&lt;br&gt;依赖如下&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java学习之CC链11</title>
-    <link href="https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BCC%E9%93%BE11/"/>
-    <id>https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BCC%E9%93%BE11/</id>
-    <published>2023-07-15T03:03:46.000Z</published>
-    <updated>2023-08-21T10:31:28.592Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;CommonsCollections 3.1-3.2.1&lt;/li&gt;
-&lt;li&gt;jdk无限制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2</summary>
         
       
     

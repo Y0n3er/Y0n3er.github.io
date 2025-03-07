@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2025-03-07T13:32:35.022Z</updated>
+  <updated>2025-03-06T13:53:31.749Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,23 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>SmartAdmin-3.13.0-”假”权限绕过</title>
-    <link href="https://y0n3er.github.io/2025/03/SmartAdmin-3-13-0-%E2%80%9D%E5%81%87%E2%80%9D%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/"/>
-    <id>https://y0n3er.github.io/2025/03/SmartAdmin-3-13-0-%E2%80%9D%E5%81%87%E2%80%9D%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/</id>
-    <published>2025-03-07T05:44:56.000Z</published>
-    <updated>2025-03-07T13:32:35.022Z</updated>
-    
-    
-    <summary type="html">Here&#39;s something encrypted, password is required to continue reading.</summary>
-    
-    
-    
-    <category term="代码审计" scheme="https://y0n3er.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>Apache HugeGraph-Server JWT 权限绕过</title>
@@ -476,6 +459,30 @@
     <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;jdk8u65&lt;/li&gt;
 &lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java学习之CommonsBeanUtils1</title>
+    <link href="https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BCommonsBeanUtils1/"/>
+    <id>https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BCommonsBeanUtils1/</id>
+    <published>2023-07-15T03:04:54.000Z</published>
+    <updated>2023-07-16T08:08:12.907Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;p&gt;jdk8&lt;br&gt;依赖如下&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     

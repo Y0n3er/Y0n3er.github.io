@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>JsRpc基本使用 | Y0n3er</title><meta name="author" content="Y0n3er"><meta name="copyright" content="Y0n3er"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="练手地址：https:&#x2F;&#x2F;github.com&#x2F;0ctDay&#x2F;encrypt-decrypt-vuls JsRpc：https:&#x2F;&#x2F;github.com&#x2F;jxhczhl&#x2F;JsRpc JsRpc基本使用首先观察一下原始的数据包  可以看到除了请求体需要解密，还有请求头中的timestamp、requestId、sign 需要实时更新，所以请求包中总共有四个地方需要处理，由于是直接只用JsRpc，那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JsRpc基本使用">
+<meta property="og:url" content="https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="Y0n3er">
+<meta property="og:description" content="练手地址：https:&#x2F;&#x2F;github.com&#x2F;0ctDay&#x2F;encrypt-decrypt-vuls JsRpc：https:&#x2F;&#x2F;github.com&#x2F;jxhczhl&#x2F;JsRpc JsRpc基本使用首先观察一下原始的数据包  可以看到除了请求体需要解密，还有请求头中的timestamp、requestId、sign 需要实时更新，所以请求包中总共有四个地方需要处理，由于是直接只用JsRpc，那么">
+<meta property="og:locale">
+<meta property="og:image" content="https://pic.20988.xyz/2024-09-05/1725514146-720386-11101.jpg">
+<meta property="article:published_time" content="2025-03-12T13:53:38.000Z">
+<meta property="article:modified_time" content="2025-03-12T13:55:52.182Z">
+<meta property="article:author" content="Y0n3er">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.20988.xyz/2024-09-05/1725514146-720386-11101.jpg"><link rel="shortcut icon" href="https://s1.ax1x.com/2022/12/27/zzBdET.jpg"><link rel="canonical" href="https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="cSE3ms5xTRF6lPYKYoBFufBNgzQms6e9odca93mSfBw"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/Y0n3er" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'JsRpc基本使用',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-12 21:55:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"  media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0-rc1"><link rel="alternate" href="/atom.xml" title="Y0n3er" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.ax1x.com/2022/12/27/zzBdET.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.20988.xyz/2024-09-05/1725514146-720386-11101.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Y0n3er</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">JsRpc基本使用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-12T13:53:38.000Z" title="Created 2025-03-12 21:53:38">2025-03-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-12T13:55:52.182Z" title="Updated 2025-03-12 21:55:52">2025-03-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="JsRpc基本使用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>练手地址：<a target="_blank" rel="noopener" href="https://github.com/0ctDay/encrypt-decrypt-vuls">https://github.com/0ctDay/encrypt-decrypt-vuls</a></p>
+<p>JsRpc：<a target="_blank" rel="noopener" href="https://github.com/jxhczhl/JsRpc">https://github.com/jxhczhl/JsRpc</a></p>
+<h2 id="JsRpc基本使用"><a href="#JsRpc基本使用" class="headerlink" title="JsRpc基本使用"></a>JsRpc基本使用</h2><p>首先观察一下原始的数据包</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105516612.png" alt="image.png"></p>
+<p>可以看到除了请求体需要解密，还有请求头中的<code>timestamp、requestId、sign</code> 需要实时更新，所以请求包中总共有四个地方需要处理，由于是直接只用JsRpc，那么就只需要找到对应的处理位置然后调用即可，不需要弄清楚具体的处理逻辑</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105522466.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105528830.png" alt="image.png"></p>
+<p>可以看到就是图中的几个地方处理的，具体逻辑就不分析了，主要是学会使用jsrpc</p>
+<p>首先把这几个函数先提升到全局，需要先断点让其加载到作用域</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105532754.png" alt="image.png"></p>
+<p>然后在控制台执行下面语句提升至全局作用域</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.requestId=p</span><br><span class="line"><span class="comment">//requestId</span></span><br><span class="line">window.v1 = v</span><br><span class="line"><span class="comment">//函数v</span></span><br><span class="line">window.sign=a.a.MD5</span><br><span class="line"><span class="comment">//签名sign</span></span><br><span class="line">window.l=l</span><br><span class="line">window.d=d</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105538367.png" alt="image.png"></p>
+<p>然后注入jsrpc中的js文件<code>JsEnv_Dev.js</code> ，注意注js的时候断点就得停止了</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105542571.png" alt="image.png"></p>
+<p>然后启动jsrpc服务端</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105546624.png" alt="image.png"></p>
+<p>再客户端连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">var</span> <span class="variable">demo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Hlclient</span>(<span class="string">&quot;ws://127.0.0.1:12080/ws?group=zzz&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105553519.png" alt="image.png"></p>
+<p>连接成功后服务端会提示新上线….然后就是将函数注册进去，即我们要怎么处理值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">demo.regAction(<span class="string">&quot;encode&quot;</span>,function (resolve,param) &#123;</span><br><span class="line">    n=JSON.stringify(v1(param))</span><br><span class="line">    <span class="type">var</span> <span class="variable">request</span> <span class="operator">=</span> l(n)</span><br><span class="line">    <span class="type">var</span> <span class="variable">time</span> <span class="operator">=</span> Date.parse(<span class="keyword">new</span> <span class="title class_">Date</span>);</span><br><span class="line">    <span class="keyword">var</span> id=requestId()</span><br><span class="line">    <span class="type">var</span> <span class="variable">sg</span> <span class="operator">=</span> sign(n+id+time).toString()</span><br><span class="line">    <span class="keyword">var</span> data=&#123;<span class="string">&quot;time&quot;</span>:<span class="string">&quot;&quot;</span>,<span class="string">&quot;id&quot;</span>:<span class="string">&quot;&quot;</span>,<span class="string">&quot;sign&quot;</span>:<span class="string">&quot;&quot;</span>,<span class="string">&quot;request&quot;</span>:<span class="string">&quot;&quot;</span>&#125;</span><br><span class="line">    data[<span class="string">&quot;time&quot;</span>]=time.toString()</span><br><span class="line">    data[<span class="string">&quot;id&quot;</span>]=id</span><br><span class="line">    data[<span class="string">&quot;sign&quot;</span>]=sg</span><br><span class="line">    data[<span class="string">&quot;request&quot;</span>] = request</span><br><span class="line">    <span class="title function_">resolve</span><span class="params">(data)</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面是加密，下面是解密</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">demo.regAction(<span class="string">&quot;decode&quot;</span>, function (resolve,param) &#123;</span><br><span class="line">    <span class="comment">//这样添加了一个param参数，http接口带上它，这里就能获得</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">response</span> <span class="operator">=</span> d(param)</span><br><span class="line">    resolve(response);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105600238.png" alt="image.png"></p>
+<p>此时就可以测试一下jsrpc处理是否能成功</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105605033.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//127.0.0.1:12080/go?group=zzz&amp;action=encode&amp;param=&#123;&quot;password&quot;:&quot;123123&quot;,&quot;username&quot;:&quot;asd&quot;,&quot;validCode&quot;:&quot;ycpa&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到加密是没有任何问题的，<code>zzz</code>就是加入的组和你一开始连接的时候相同即可，<code>action</code> 即你注册的加密函数，<code>param</code> 就是你要处理的参数，看看解密</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105609221.png" alt="image.png"></p>
+<p>也是能够正常处理的</p>
+<h2 id="JsRpc联动burp"><a href="#JsRpc联动burp" class="headerlink" title="JsRpc联动burp"></a>JsRpc联动burp</h2><p>联动burp需要借助mitmproxy写脚本，或者借助其它一些burp插件也行，这里就用mitmproxy了，脚本借助gpt弄几下即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">from mitmproxy <span class="keyword">import</span> ctx</span><br><span class="line"></span><br><span class="line">def <span class="title function_">get_rpc</span><span class="params">(param)</span>:</span><br><span class="line">    url = <span class="string">&quot;http://127.0.0.1:12080/go&quot;</span></span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&quot;group&quot;</span>: <span class="string">&quot;zzz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;action&quot;</span>: <span class="string">&quot;encode&quot;</span>,</span><br><span class="line">        <span class="string">&quot;param&quot;</span>: param.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = requests.get(url, params=params, timeout=<span class="number">5</span>)</span><br><span class="line">        # ctx.log.info(f<span class="string">&quot;RPC Response: &#123;result.text&#125;&quot;</span>)</span><br><span class="line">        # 第一次解析 JSON，获取外层结构</span><br><span class="line">        outer_data = result.json()</span><br><span class="line">        # 第二次解析 data 字段（字符串 -&gt; 字典）</span><br><span class="line">        inner_data = json.loads(outer_data[<span class="string">&#x27;data&#x27;</span>])</span><br><span class="line">        <span class="keyword">return</span> inner_data  # 直接返回解析后的内层数据</span><br><span class="line">    except Exception as e:</span><br><span class="line">        ctx.log.error(f<span class="string">&quot;Error in get_rpc: &#123;str(e)&#125;&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> None</span><br><span class="line"></span><br><span class="line">def <span class="title function_">get_responseRpc</span><span class="params">(param)</span>:</span><br><span class="line">    url = <span class="string">&quot;http://127.0.0.1:12080/go&quot;</span></span><br><span class="line">    params = &#123;</span><br><span class="line">        <span class="string">&quot;group&quot;</span>: <span class="string">&quot;zzz&quot;</span>,</span><br><span class="line">        <span class="string">&quot;action&quot;</span>: <span class="string">&quot;decode&quot;</span>,</span><br><span class="line">        <span class="string">&quot;param&quot;</span>: param.decode(<span class="string">&#x27;utf-8&#x27;</span>, errors=<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        result = requests.get(url, params=params, timeout=<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        outer_data = result.json()</span><br><span class="line">        # 第二次解析 data 字段（字符串 -&gt; 字典）</span><br><span class="line">        inner_data = json.loads(outer_data[<span class="string">&#x27;data&#x27;</span>])</span><br><span class="line">        <span class="keyword">return</span> inner_data  # 直接返回解析后的内层数据</span><br><span class="line">    except Exception as e:</span><br><span class="line">        ctx.log.error(f<span class="string">&quot;Error in get_rpc: &#123;str(e)&#125;&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> None</span><br><span class="line"></span><br><span class="line">def <span class="title function_">request</span><span class="params">(flow)</span>:</span><br><span class="line">    original_body = flow.request.content</span><br><span class="line">    ctx.log.info(f<span class="string">&quot;原始请求体: &#123;original_body&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = get_rpc(original_body)</span><br><span class="line">    <span class="keyword">if</span> result is None:</span><br><span class="line">        ctx.log.error(<span class="string">&quot;RPC failed, skipping request modification&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        # 直接使用内层数据</span><br><span class="line">        flow.request.headers[<span class="string">&#x27;timestamp&#x27;</span>] = result[<span class="string">&#x27;time&#x27;</span>]</span><br><span class="line">        flow.request.headers[<span class="string">&#x27;requestId&#x27;</span>] = result[<span class="string">&#x27;id&#x27;</span>]</span><br><span class="line">        flow.request.headers[<span class="string">&#x27;sign&#x27;</span>] = result[<span class="string">&#x27;sign&#x27;</span>]</span><br><span class="line">        flow.request.content = result[<span class="string">&#x27;request&#x27;</span>].encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        flow.request.headers[<span class="string">&#x27;Content-Length&#x27;</span>] = str(len(flow.request.content))</span><br><span class="line">        ctx.log.info(f<span class="string">&quot;加密后的请求体: &#123;flow.request.content&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    except Exception as e:</span><br><span class="line">        ctx.log.error(f<span class="string">&quot;Error in request: &#123;str(e)&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">def <span class="title function_">response</span><span class="params">(flow)</span>:</span><br><span class="line">    response_body = flow.response.content</span><br><span class="line">    ctx.log.info(f<span class="string">&quot;响应体: &#123;response_body&#125;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    result = get_responseRpc(response_body)</span><br><span class="line">    <span class="keyword">if</span> result is None:</span><br><span class="line">        ctx.log.error(<span class="string">&quot;Response RPC failed, keeping original response&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        # 将解码后的字典转为 JSON 字符串并编码为字节</span><br><span class="line">        decoded_json = json.dumps(result, ensure_ascii=False).encode(<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        flow.response.content = decoded_json</span><br><span class="line">        flow.response.headers[<span class="string">&#x27;Content-Length&#x27;</span>] = str(len(flow.response.content))</span><br><span class="line">        # 可选：设置 Content-Type 为 JSON</span><br><span class="line">        flow.response.headers[<span class="string">&#x27;Content-Type&#x27;</span>] = <span class="string">&#x27;application/json; charset=utf-8&#x27;</span></span><br><span class="line">        ctx.log.info(f<span class="string">&quot;解码后的响应体: &#123;flow.response.content&#125;&quot;</span>)</span><br><span class="line">    except Exception as e:</span><br><span class="line">        ctx.log.error(f<span class="string">&quot;Error in response: &#123;str(e)&#125;&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后设置burp的上游代理</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105616107.png" alt="image.png"></p>
+<p>运行脚本</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmdump -p <span class="number">8081</span> -s .\JsPython.py </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105619808.png" alt="image.png"></p>
+<p>这样即可实现自动化加解密</p>
+<p>当密码不正确时</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105624103.png" alt="image.png"></p>
+<p>当密码正确时，这里请求头中的三个值在burp虽然没变但实际上是已经改变了的，因为是在脚本中做的处理</p>
+<p><img src="https://raw.githubusercontent.com/Y0n3er/img/master/blogimg/20250310105628138.png" alt="image.png"></p>
+<p>还是非常方便滴，因为不需要去逆js了</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/14689">https://xz.aliyun.com/news/14689</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/12678">https://xz.aliyun.com/news/12678</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://Y0n3er.github.io">Y0n3er</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://pic.20988.xyz/2024-09-05/1725514146-720386-11101.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/03/SmartAdmin-3-13-0-%E2%80%9D%E5%81%87%E2%80%9D%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/"><img class="next-cover" src="https://pic.20988.xyz/2025-03-06/1741245117-241450-c2363387-d0f9-4bb6-826b-1658efa232fd.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">SmartAdmin-3.13.0-”假”权限绕过</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s1.ax1x.com/2022/12/27/zzBdET.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Y0n3er</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">54</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Y0n3er"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://y0n3er.github.io/atom.xml" target="_blank" title=""><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">纯纯记录一下</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">JsRpc基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JsRpc%E8%81%94%E5%8A%A8burp"><span class="toc-number">2.</span> <span class="toc-text">JsRpc联动burp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="JsRpc基本使用"><img src="https://pic.20988.xyz/2024-09-05/1725514146-720386-11101.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JsRpc基本使用"/></a><div class="content"><a class="title" href="/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" title="JsRpc基本使用">JsRpc基本使用</a><time datetime="2025-03-12T13:53:38.000Z" title="Created 2025-03-12 21:53:38">2025-03-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/SmartAdmin-3-13-0-%E2%80%9D%E5%81%87%E2%80%9D%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/" title="SmartAdmin-3.13.0-”假”权限绕过"><img src="https://pic.20988.xyz/2025-03-06/1741245117-241450-c2363387-d0f9-4bb6-826b-1658efa232fd.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SmartAdmin-3.13.0-”假”权限绕过"/></a><div class="content"><a class="title" href="/2025/03/SmartAdmin-3-13-0-%E2%80%9D%E5%81%87%E2%80%9D%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/" title="SmartAdmin-3.13.0-”假”权限绕过">SmartAdmin-3.13.0-”假”权限绕过</a><time datetime="2025-03-07T05:44:56.000Z" title="Created 2025-03-07 13:44:56">2025-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/03/Apache-HugeGraph-Server-JWT-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/" title="Apache HugeGraph-Server JWT 权限绕过"><img src="https://pic.20988.xyz/2024-08-12/1723483122-418983-27.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Apache HugeGraph-Server JWT 权限绕过"/></a><div class="content"><a class="title" href="/2025/03/Apache-HugeGraph-Server-JWT-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/" title="Apache HugeGraph-Server JWT 权限绕过">Apache HugeGraph-Server JWT 权限绕过</a><time datetime="2025-03-06T13:50:10.000Z" title="Created 2025-03-06 21:50:10">2025-03-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/02/2025-SUCTF-SU-ez-solon/" title="2025-SUCTF-SU-ez-solon"><img src="https://pic.20988.xyz/2025-02-22/1740243271-818459-16fd191b-da08-4606-9cfe-ea079ab55f01.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025-SUCTF-SU-ez-solon"/></a><div class="content"><a class="title" href="/2025/02/2025-SUCTF-SU-ez-solon/" title="2025-SUCTF-SU-ez-solon">2025-SUCTF-SU-ez-solon</a><time datetime="2025-02-22T16:39:41.000Z" title="Created 2025-02-23 00:39:41">2025-02-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/PolarCTF-2024%E7%A7%8B%E5%AD%A3%E4%B8%AA%E4%BA%BA%E6%8C%91%E6%88%98%E8%B5%9B-Java/" title="PolarCTF_2024秋季个人挑战赛_Java"><img src="https://pic.20988.xyz/2024-05-29/1716947049-304546-001-8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PolarCTF_2024秋季个人挑战赛_Java"/></a><div class="content"><a class="title" href="/2024/11/PolarCTF-2024%E7%A7%8B%E5%AD%A3%E4%B8%AA%E4%BA%BA%E6%8C%91%E6%88%98%E8%B5%9B-Java/" title="PolarCTF_2024秋季个人挑战赛_Java">PolarCTF_2024秋季个人挑战赛_Java</a><time datetime="2024-11-17T15:37:21.000Z" title="Created 2024-11-17 23:37:21">2024-11-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2025 By <i id="heartbeat" class="fa fas fa-heartbeat"></i> Y0n3er</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Y2LIAdhXjz212oPe1Sedkelg-gzGzoHsz',
+      appKey: 'DBMCkRs4Tdy7VHSxJWijRuer',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script src="source/background.js"></script><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>

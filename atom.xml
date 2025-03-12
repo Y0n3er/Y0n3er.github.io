@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2025-03-07T13:37:33.140Z</updated>
+  <updated>2025-03-12T13:55:52.182Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JsRpc基本使用</title>
+    <link href="https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <id>https://y0n3er.github.io/2025/03/JsRpc%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</id>
+    <published>2025-03-12T13:53:38.000Z</published>
+    <updated>2025-03-12T13:55:52.182Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;练手地址：&lt;a href=&quot;https://github.com/0ctDay/encrypt-decrypt-vuls&quot;&gt;https://github.com/0ctDay/encrypt-decrypt-vuls&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;JsRpc：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="渗透" scheme="https://y0n3er.github.io/categories/%E6%B8%97%E9%80%8F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>SmartAdmin-3.13.0-”假”权限绕过</title>
@@ -458,31 +482,6 @@
         
     <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;p&gt;这里我直接用的Drunkbaby佬的环境，自己搭建失败了，淦&lt;/p&gt;
 &lt;h2 id=&quot;漏洞原理&quot;&gt;&lt;a href=&quot;#漏洞原理&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java学习之Shiro550</title>
-    <link href="https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BShiro550/"/>
-    <id>https://y0n3er.github.io/2023/07/Java%E5%AD%A6%E4%B9%A0%E4%B9%8BShiro550/</id>
-    <published>2023-07-17T03:18:37.000Z</published>
-    <updated>2023-07-17T03:35:54.580Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;jdk8u65&lt;/li&gt;
-&lt;li&gt;&lt;a</summary>
         
       
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Y0n3er</title>
+  <title>ChenXun</title>
   <icon>https://y0n3er.github.io/icon.png</icon>
   
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://y0n3er.github.io/</id>
   
   <author>
-    <name>Y0n3er</name>
+    <name>ChenXun</name>
     
   </author>
   

@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2025-03-24T12:39:39.049Z</updated>
+  <updated>2025-06-06T01:49:43.190Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ClassPathXmlApplicationContext的不出网利用学习</title>
+    <link href="https://y0n3er.github.io/2025/06/ClassPathXmlApplicationContext%E7%9A%84%E4%B8%8D%E5%87%BA%E7%BD%91%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://y0n3er.github.io/2025/06/ClassPathXmlApplicationContext%E7%9A%84%E4%B8%8D%E5%87%BA%E7%BD%91%E5%88%A9%E7%94%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2025-06-06T01:45:51.000Z</published>
+    <updated>2025-06-06T01:49:43.190Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;首发于奇安信攻防社区：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Tomcat-session反序列化分析</title>
@@ -468,29 +492,6 @@
     
     
     <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>VulnStack--01</title>
-    <link href="https://y0n3er.github.io/2023/08/VulnStack-01/"/>
-    <id>https://y0n3er.github.io/2023/08/VulnStack-01/</id>
-    <published>2023-08-08T14:29:51.000Z</published>
-    <updated>2024-03-19T05:33:52.608Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot; title=&quot;环境搭建&quot;&gt;&lt;/a&gt;环境搭建&lt;/h2&gt;&lt;p&gt;win7需要通外网，所以需要两张网卡，然后win7需要ping通kali、win2003、win2008&lt;br&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="内网" scheme="https://y0n3er.github.io/categories/%E5%86%85%E7%BD%91/"/>
     
     
   </entry>

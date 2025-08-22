@@ -6,7 +6,7 @@
   <link href="https://y0n3er.github.io/atom.xml" rel="self"/>
   
   <link href="https://y0n3er.github.io/"/>
-  <updated>2025-07-27T02:54:20.535Z</updated>
+  <updated>2025-08-22T13:36:47.222Z</updated>
   <id>https://y0n3er.github.io/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SmartBI-share.jsp权限绕过致RCE</title>
+    <link href="https://y0n3er.github.io/2025/08/SmartBI-share-jsp%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87%E8%87%B4RCE/"/>
+    <id>https://y0n3er.github.io/2025/08/SmartBI-share-jsp%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87%E8%87%B4RCE/</id>
+    <published>2025-08-22T13:35:36.000Z</published>
+    <updated>2025-08-22T13:36:47.222Z</updated>
+    
+    
+    
+    
+    <category term="代码审计" scheme="https://y0n3er.github.io/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2025BlackHat Asia-Java反序列化利用链</title>
@@ -462,29 +477,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;1-2-62漏洞分析&quot;&gt;&lt;a href=&quot;#1-2-62漏洞分析&quot; class=&quot;headerlink&quot; title=&quot;1.2.62漏洞分析&quot;&gt;&lt;/a&gt;1.2.62漏洞分析&lt;/h2&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Java安全" scheme="https://y0n3er.github.io/categories/Java%E5%AE%89%E5%85%A8/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Fastjson1.2.25-1.2.47绕过</title>
-    <link href="https://y0n3er.github.io/2023/08/Fastjson1-2-25-1-2-47%E7%BB%95%E8%BF%87/"/>
-    <id>https://y0n3er.github.io/2023/08/Fastjson1-2-25-1-2-47%E7%BB%95%E8%BF%87/</id>
-    <published>2023-08-27T15:55:43.000Z</published>
-    <updated>2024-03-19T05:32:25.990Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-2-25-修复分析&quot;&gt;&lt;a href=&quot;#1-2-25-修复分析&quot; class=&quot;headerlink&quot; title=&quot;1.2.25 修复分析&quot;&gt;&lt;/a&gt;1.2.25</summary>
         
       
     

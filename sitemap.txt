@@ -57,7 +57,6 @@ https://y0n3er.github.io/2023/03/SSTI-Lab/
 https://y0n3er.github.io/css/index.html
 https://y0n3er.github.io/2023/02/NSSRound-7-Team%E5%A4%8D%E7%8E%B0/
 https://y0n3er.github.io/categories/index.html
-https://y0n3er.github.io/googleda9a91bdd2098264.html
 https://y0n3er.github.io/2022/12/DnsLog%E5%A4%96%E5%B8%A6%E6%B3%A8%E5%85%A5%E5%AD%A6%E4%B9%A0/
 https://y0n3er.github.io/2022/12/7%E5%AD%97%E7%AC%A6rce%E9%A2%98%E7%9B%AE%E6%90%AD%E5%BB%BA/
 https://y0n3er.github.io/2022/12/%E5%AD%A6%E4%B9%A0%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E9%A2%98/

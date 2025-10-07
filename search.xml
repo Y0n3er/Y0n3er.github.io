@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>某微前台登录绕过+后台组合拳RCE</title>
+      <link href="/2025/10/%E6%9F%90%E5%BE%AE%E5%89%8D%E5%8F%B0%E7%99%BB%E5%BD%95%E7%BB%95%E8%BF%87-%E5%90%8E%E5%8F%B0%E7%BB%84%E5%90%88%E6%8B%B3RCE/"/>
+      <url>/2025/10/%E6%9F%90%E5%BE%AE%E5%89%8D%E5%8F%B0%E7%99%BB%E5%BD%95%E7%BB%95%E8%BF%87-%E5%90%8E%E5%8F%B0%E7%BB%84%E5%90%88%E6%8B%B3RCE/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://mp.weixin.qq.com/s/mKntFehHY35dyeLAdGMbbQ">某微前台登录绕过+后台组合拳RCE</a></p><p>实际环境该payload可能无法成功利用，未仔细测试rasp的绕过</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 代码审计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SmartBI-权限绕过致RCE</title>
       <link href="/2025/08/SmartBI-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87%E8%87%B4RCE/"/>
       <url>/2025/08/SmartBI-%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87%E8%87%B4RCE/</url>
